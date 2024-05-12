@@ -51,6 +51,7 @@ export const search: IFunction = {
     },
   },
   async execute(args: any, req: IRequest) {
-    return await searchWeb(args.query, req.env.SEARCH1API_KEY);
+    const search1apiKey = req.request.config?.search1api_key || req.env.SEARCH1API_KEY;
+    return await searchWeb(args.query, search1apiKey);
   },
 };
