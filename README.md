@@ -4,7 +4,9 @@ This is a Siri Ultra that works with Apple Shortcuts removing the need for a ded
 
 ## How it works
 
-The assistant is run on Cloudflare Workers and can work with any LLM model. The code snippet here uses llama 3 as an example with a custom function calling for searching online.
+The assistant is run on Cloudflare Workers and can work with any LLM model. 
+
+[Demo Video](https://x.com/fatwang2ai/status/1789601031313035281)
 
 # Usage
 
