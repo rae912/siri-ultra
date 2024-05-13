@@ -21,6 +21,14 @@ export interface IRequest {
   request: IBody;
 }
 
+function removeDuplicateBraces(jsonString: string): string {
+  const match = jsonString.match(/^{\s*"({.*})"\s*}$/s);
+  
+  if (match && match[1]) {
+    return match[1].trim();
+  }
+  return jsonString;
+}
 export const getClient = (req: IRequest): { client: OpenAI; model: string } => {
   const url = req.request.config?.api_base || req.env.API_BASE || "https://api.groq.com/openai/v1/";
   const apiKey = req.request.config?.api_key || req.env.API_KEY;
@@ -68,9 +76,13 @@ export const handle = async (req: IRequest): Promise<string> => {
         tool_calls: ask.choices[0].message.tool_calls,
       });
       for (const tool of ask.choices[0].message.tool_calls) {
+        let cleanedArguments = tool.function.arguments;
+        if (openai.model.includes("moonshot")) {
+          cleanedArguments = removeDuplicateBraces(cleanedArguments);
+        }
         const result = await FunctionHandler.handle(
           tool.function.name,
-          JSON.parse(tool.function.arguments),
+          JSON.parse(cleanedArguments),
           req
         );
         await chat.add(req.request.chat_id, {
