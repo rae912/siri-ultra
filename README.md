@@ -17,6 +17,8 @@ The assistant is run on Cloudflare Workers and can work with any LLM model.
 2. **Configure**: 
    - Open the Shortcut, follow prompts to input necessary variables.
 
+  > **Branch**: Siri Ultra Vision is testing on [this link](https://search2ai.online/siri003), which can talk with photos by gpt-4o
+
 ## Method 2: Setting Up the Self-Hosted Version
 
 ### Getting Started
