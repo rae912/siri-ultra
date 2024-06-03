@@ -7,6 +7,7 @@ This is a Siri Ultra that works with Apple Shortcuts removing the need for a ded
 The assistant is run on Cloudflare Workers and can work with any LLMs. 
 
 [Siri Ultra Demo Video](https://x.com/fatwang2ai/status/1789601031313035281)
+
 [Siri Ultra Vision Demo Video](https://x.com/fatwang2ai/status/1791648375693361161)
 
 ## Features
