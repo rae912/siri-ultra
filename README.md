@@ -4,20 +4,27 @@ This is a Siri Ultra that works with Apple Shortcuts removing the need for a ded
 
 ## How it works
 
-The assistant is run on Cloudflare Workers and can work with any LLM model. 
+The assistant is run on Cloudflare Workers and can work with any LLMs. 
 
-[Demo Video](https://x.com/fatwang2ai/status/1789601031313035281)
+[Siri Ultra Demo Video](https://x.com/fatwang2ai/status/1789601031313035281)
+[Siri Ultra Vision Demo Video](https://x.com/fatwang2ai/status/1791648375693361161)
+
+## Features
+- Real-time dialogue 💬
+- Real-time voice 🎙️
+- Real-time Web Search 🔍
+- Talk with pictures 🌄
+- Talk with videos 📹
 
 # Usage
 
 ## Method 1: Setting Up the Shortcut Directly
 1. **Install the Shortcut**: 
-   - Click [this link](https://search2ai.online/siri002) to install.
+   - Click [Siri Ultra](https://search2ai.online/siri002) for chat with LLMs to install.
+   - Click [Siri Ultra Vision](https://search2ai.online/siri003) for vision of LLMs to install.
 
 2. **Configure**: 
    - Open the Shortcut, follow prompts to input necessary variables.
-
-  > **Branch**: Siri Ultra Vision is testing on [this link](https://search2ai.online/siri003), which can talk with photos by gpt-4o
 
 ## Method 2: Setting Up the Self-Hosted Version
 
@@ -66,8 +73,8 @@ To deploy the worker, run `npx wrangler deploy`.
 ### Setting Up the Shortcut
 
 1. **Install the shortcut**:
-   - Use [this link](https://search2ai.online/siri002) to install the shortcut.
-
+   - Use [Siri Ultra](https://search2ai.online/siri002) to install the chat shortcut.
+   - Use [Siri Ultra Vision](https://search2ai.online/siri003) to install the vision shortcut.
 2. **Configure the shortcut**:
    - Open the shortcut and replace the `URL` field with your worker's URL.
    - If you didn't change the default name, the URL should be `https://siri-ultra.<your-username>.workers.dev`.

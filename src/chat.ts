@@ -5,6 +5,7 @@ import { FunctionHandler } from "./functions";
 export interface IBody {
   chat_id: string;
   input: string;
+  image?: string[];
   date: string;
   config?: {
     model?: string;
@@ -55,18 +56,44 @@ export const handle = async (req: IRequest): Promise<string> => {
     date: ${req.request.date}
   `;
   const chat = ChatHistory.getInstance(req.env.siri_ai_chats);
-  await chat.add(req.request.chat_id, {
-    role: "user",
-    content: req.request.input,
-  });
+  if (!req.request.image) {
+    await chat.add(req.request.chat_id, {
+      role: "user",
+      content: req.request.input,
+    });
+  }
+
   let response = "";
   while (true) {
-    const ask = await openai.client.chat.completions.create({
-      model: openai.model,
-      messages: [
+    let currentMessages;
+    if (req.request.image) {
+      currentMessages = [
+        { role: "system", content: system },
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: req.request.input,
+            },
+            ...req.request.image.map((base64Image) => ({
+              type: "image_url",
+              image_url: {
+                url: `data:image/jpeg;base64,${base64Image}`,
+              },
+            })),
+          ],
+        },
+      ];
+    } else {
+      currentMessages = [
         { role: "system", content: system },
         ...(await chat.get(req.request.chat_id)),
-      ],
+      ];
+    }
+    const ask = await openai.client.chat.completions.create({
+      model: openai.model,
+      messages: currentMessages,
       tools: FunctionHandler.functions,
     });
     if (ask.choices[0].message.tool_calls) {
@@ -101,5 +128,5 @@ export const handle = async (req: IRequest): Promise<string> => {
       break;
     }
   }
-  return response;
+  return response;  
 };

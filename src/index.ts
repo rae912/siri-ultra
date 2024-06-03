@@ -6,7 +6,6 @@ const app = new Hono();
 app.post("/", async (c) => {
   const body = (await c.req.json()) as IBody;
   try {
-    console.log(JSON.stringify(body, null, 2));
     const response = await handle({
       env: c.env,
       request: body,
@@ -16,7 +15,6 @@ app.post("/", async (c) => {
       response,
     });
   } catch (error) {
-    console.log(error);
     return c.json({
       response: "Something went wrong, we are working on it",
     });
