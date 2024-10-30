@@ -11,4 +11,4 @@ SYSTEM_PROMPT="You are Siri Ultra. Answer in 1-2 sentences. Be friendly, helpful
 
 [[kv_namespaces]]
 binding = "siri_ai_chats"
-id = "d9afe4035eec4d33964b7fdb1bf9496d"
+id = "1eaa14db09ce40b48bf6b68411400c97"

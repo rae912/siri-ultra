@@ -12,7 +12,8 @@ export interface IBody {
     api_base?: string;
     system_prompt?: string;
     api_key?: string;
-    search1api_key?: string;
+    google_api_key?: string;
+    google_cx?: string;
   };
 }
 
